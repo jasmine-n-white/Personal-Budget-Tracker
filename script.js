@@ -68,7 +68,7 @@ const viewIncome = () => {
 const totalIncome = () => {
     let allIncome = 0;
     for(i=0; i<income.length; i++) {
-        allIncome += income[i];
+        allIncome += Number(income[i]);
     }
     console.log(`Total Income: ${allIncome}`);
 }
@@ -86,16 +86,27 @@ const viewSummary = () => {
 while(dontExit) {
     let userInput = prompt("Enter Option Number: ");
     if (userInput == 1) {
+        console.log("====================================================");
         addIncome();
+        console.log("====================================================");
     } else if (userInput == 2) {
+        console.log("====================================================");
         addExpense();
+        console.log("====================================================");
     } else if (userInput == 3) {
+        console.log("====================================================");
         removeExpense();
+        console.log("====================================================");
     } else if (userInput == 4) {
+        console.log("====================================================");
         viewExpenses();
+        console.log("----------------------------------------------------");
         viewIncome();
+        console.log("====================================================");
     } else if (userInput == 5) {
+        console.log("====================================================");
         viewSummary();
+        console.log("====================================================");
     } else if (userInput == 6) {
         dontExit = false;
         console.log("=========");
