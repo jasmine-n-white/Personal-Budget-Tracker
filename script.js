@@ -19,7 +19,7 @@ let expenses = {
     groceries: 0,
     utilities: 0,
 };
-let balance = Number(totalIncome() - totalExpenses());
+// let balance = Number(totalIncome() - totalExpenses());
 //functions
 
 const addIncome = () => {
@@ -88,7 +88,7 @@ const totalExpenses = () => {
 const viewSummary = () => {
     totalIncome();
     totalExpenses();
-    console.log(`Remaining Balance: ${balance}`);
+    // console.log(`Remaining Balance: ${balance}`);
 }
 while(dontExit) {
     let userInput = prompt("Enter Option Number: ");
