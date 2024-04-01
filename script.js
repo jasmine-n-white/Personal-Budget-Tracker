@@ -15,24 +15,44 @@ console.log("\n");
 let dontExit = true;
 let income = [];
 let expenses = {
-    rent: "",
-
+    Rent: "",
+    Groceries: "",
+    Gas: "",
+    Utilities: "",
+    Insurance: ""
 };
-let userInput;
-let balance;
 //functions
 
-const addIncome = (income) => {
+const addIncome = () => {
     let newIncome = prompt("Enter the income amount you would like to add: ");
     income.push(newIncome);
 }
-const addExpense = (expenses) => {
-    // let newExpense = 
-}
-const removeExpense = () => {
+const addExpense = () => {
+    let addExpenseCategory = prompt("Enter the category of the expense you would like to add: ");
+    //add an if statement to check if the entered category is a valid input/exists in the object
+    let newExpense = Number(prompt("Enter the amount you would like to add to the selected expense category: "));
+    let existingExpense = 0;
+    if (expenses[addExpenseCategory] !== "") {
+       existingExpense = Number(expenses[addExpenseCategory]);
+    } 
+    expenses[addExpenseCategory] = newExpense + existingExpense;
     
 }
+//consider adding a while loop to this function??
+const removeExpense = () => {
+    let subExpenseCategory = prompt("Enter the category of the expense you would like to subtract from: ");
+    //add an if statement to check if the entered category is a valid input/exists in the object
+    let currentExpense = Number(expenses[subExpenseCategory]);
+    if (currentExpense == 0) {
+       console.log("Invalid category to subtract from!");
+    } 
+    let subExpense = Number(prompt("Enter the amount you would like to subtract from the selected expense category: "));
+    expenses[subExpenseCategory] = currentExpense - subExpense;
+}
 const viewExpenses = () => {
+    Object.keys(expenses).forEach(key => {
+        console.log(`${key}: ${expenses[key]}`);
+    });
     
 }
 const viewIncome = () => {
@@ -43,12 +63,13 @@ const viewIncome = () => {
     for (let i = 0; i < income.length; i++) {
         console.log(income[i]);
     }
-}
-const viewSummary = () => {
     
 }
+const viewSummary = () => {
+    viewIncome();
+}
 while(dontExit) {
-    userInput = prompt("Enter Option Number: ");
+    let userInput = prompt("Enter Option Number: ");
     if (userInput == 1) {
         addIncome();
     } else if (userInput == 2) {
