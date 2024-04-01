@@ -19,10 +19,11 @@ let expenses = {
     groceries: 0,
     utilities: 0,
 };
+let balance = Number(totalIncome() - totalExpenses());
 //functions
 
 const addIncome = () => {
-    let newIncome = prompt("Enter the income amount you would like to add: ");
+    let newIncome = prompt("Enter the income amount you would like to add to: ");
     income.push(newIncome);
 }
 const addExpense = () => {
@@ -42,13 +43,17 @@ const addExpense = () => {
 //consider adding a while loop to this function??
 const removeExpense = () => {
     let subExpenseCategory = prompt("Enter the category of the expense you would like to subtract from: ");
-    //add an if statement to check if the entered category is a valid input/exists in the object
     let currentExpense = Number(expenses[subExpenseCategory]);
-    if (currentExpense == 0) {
-       console.log("Invalid category to subtract from!");
-    } 
+    if (!expenses.hasOwnProperty(subExpenseCategory) || currentExpense == 0) {
+        console.log("Invalid category to subtract from!");
+    } else {
     let subExpense = Number(prompt("Enter the amount you would like to subtract from the selected expense category: "));
-    expenses[subExpenseCategory] = currentExpense - subExpense;
+    if (subExpense > currentExpense) {
+        console.log("Invalid value! The amount you want to subtract must be less than or equal to the current expense value.");
+    } else {
+        expenses[subExpenseCategory] = currentExpense - subExpense;
+    }
+    } 
 }
 const viewExpenses = () => {
     Object.keys(expenses).forEach(key => {
@@ -83,6 +88,7 @@ const totalExpenses = () => {
 const viewSummary = () => {
     totalIncome();
     totalExpenses();
+    console.log(`Remaining Balance: ${balance}`);
 }
 while(dontExit) {
     let userInput = prompt("Enter Option Number: ");
