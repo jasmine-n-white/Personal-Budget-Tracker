@@ -15,11 +15,9 @@ console.log("\n");
 let dontExit = true;
 let income = [];
 let expenses = {
-    Rent: 0,
-    Groceries: 0,
-    Gas: 0,
-    Utilities: 0,
-    Insurance: 0
+    rent: 0,
+    groceries: 0,
+    utilities: 0,
 };
 //functions
 
@@ -29,13 +27,16 @@ const addIncome = () => {
 }
 const addExpense = () => {
     let addExpenseCategory = prompt("Enter the category of the expense you would like to add: ");
-    //add an if statement to check if the entered category is a valid input/exists in the object
+    if (expenses.hasOwnProperty(addExpenseCategory)) {
     let newExpense = Number(prompt("Enter the amount you would like to add to the selected expense category: "));
     let existingExpense = 0;
     if (expenses[addExpenseCategory] !== 0) {
        existingExpense = Number(expenses[addExpenseCategory]);
     } 
     expenses[addExpenseCategory] = newExpense + existingExpense;
+} else {
+    console.log("Invalid category!");
+}
     
 }
 //consider adding a while loop to this function??
