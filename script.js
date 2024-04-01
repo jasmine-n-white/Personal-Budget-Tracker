@@ -70,14 +70,14 @@ const totalIncome = () => {
     for(i=0; i<income.length; i++) {
         allIncome += income[i];
     }
-    console.log(`Total income: ${allIncome}`);
+    console.log(`Total Income: ${allIncome}`);
 }
 const totalExpenses = () => {
     let allExpenses = 0;
-    Object.values(expenses).forEach(val => {
-        allExpenses += Number(Object.values(expenses));
-    })
-    console.log(`Total expenses: ${allExpenses}`);
+    for(let key in expenses) {
+        allExpenses += Number(expenses[key]);
+    }
+    console.log(`Total Expenses: ${allExpenses}`);
 }
 const viewSummary = () => {
     totalIncome();
