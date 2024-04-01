@@ -20,19 +20,19 @@ let expenses = {};
 const addIncome = (income) => {
 
 }
-const addExpense = (expenses) => {
+const addExpense = () => {
 
 }
-const removeExpense = (expenses) => {
+const removeExpense = () => {
     
 }
-const viewExpenses = (expenses) => {
+const viewExpenses = () => {
     
 }
-const addExpense = (expense) => {
+const viewIncome = () => {
     
 }
-const addExpense = (expense) => {
+const viewSummary = () => {
     
 }
 while(dontExit) {
