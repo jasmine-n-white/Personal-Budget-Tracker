@@ -15,11 +15,11 @@ console.log("\n");
 let dontExit = true;
 let income = [];
 let expenses = {
-    Rent: "",
-    Groceries: "",
-    Gas: "",
-    Utilities: "",
-    Insurance: ""
+    Rent: 0,
+    Groceries: 0,
+    Gas: 0,
+    Utilities: 0,
+    Insurance: 0
 };
 //functions
 
@@ -32,7 +32,7 @@ const addExpense = () => {
     //add an if statement to check if the entered category is a valid input/exists in the object
     let newExpense = Number(prompt("Enter the amount you would like to add to the selected expense category: "));
     let existingExpense = 0;
-    if (expenses[addExpenseCategory] !== "") {
+    if (expenses[addExpenseCategory] !== 0) {
        existingExpense = Number(expenses[addExpenseCategory]);
     } 
     expenses[addExpenseCategory] = newExpense + existingExpense;
@@ -65,8 +65,23 @@ const viewIncome = () => {
     }
     
 }
+const totalIncome = () => {
+    let allIncome = 0;
+    for(i=0; i<income.length; i++) {
+        allIncome += income[i];
+    }
+    console.log(`Total income: ${allIncome}`);
+}
+const totalExpenses = () => {
+    let allExpenses = 0;
+    Object.values(expenses).forEach(val => {
+        allExpenses += Number(Object.values(expenses));
+    })
+    console.log(`Total expenses: ${allExpenses}`);
+}
 const viewSummary = () => {
-    viewIncome();
+    totalIncome();
+    totalExpenses();
 }
 while(dontExit) {
     let userInput = prompt("Enter Option Number: ");
@@ -78,6 +93,7 @@ while(dontExit) {
         removeExpense();
     } else if (userInput == 4) {
         viewExpenses();
+        viewIncome();
     } else if (userInput == 5) {
         viewSummary();
     } else if (userInput == 6) {
