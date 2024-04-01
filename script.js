@@ -14,14 +14,20 @@ console.log("\n");
 
 let dontExit = true;
 let income = [];
-let expenses = {};
+let expenses = {
+    rent: "",
+
+};
+let userInput;
+let balance;
 //functions
 
 const addIncome = (income) => {
-
+    let newIncome = prompt("Enter the income amount you would like to add: ");
+    income.push(newIncome);
 }
-const addExpense = () => {
-
+const addExpense = (expenses) => {
+    // let newExpense = 
 }
 const removeExpense = () => {
     
@@ -30,12 +36,37 @@ const viewExpenses = () => {
     
 }
 const viewIncome = () => {
-    
+    console.log("Income: ");
+    if (income.length == 0) {
+        console.log("No income!");
+    }
+    for (let i = 0; i < income.length; i++) {
+        console.log(income[i]);
+    }
 }
 const viewSummary = () => {
     
 }
 while(dontExit) {
+    userInput = prompt("Enter Option Number: ");
+    if (userInput == 1) {
+        addIncome();
+    } else if (userInput == 2) {
+        addExpense();
+    } else if (userInput == 3) {
+        removeExpense();
+    } else if (userInput == 4) {
+        viewExpenses();
+    } else if (userInput == 5) {
+        viewSummary();
+    } else if (userInput == 6) {
+        dontExit = false;
+        console.log("=========");
+        console.log("GOODBYE!!");
+        console.log("=========");
+        break;
+    }
+}
 //if option 1
 //add income
 //if option 2
@@ -60,4 +91,3 @@ while(dontExit) {
 //view transactions
 //view summary
 //exit
-}
