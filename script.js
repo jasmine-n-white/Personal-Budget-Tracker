@@ -1,15 +1,17 @@
 const prompt = require("prompt-sync")({sigint: true});
 
-console.log("Welcome to the Personal Budget Tracking Application!");
-console.log("====================================================");
-console.log("Choose an option: ");
-console.log("1. Add income");
-console.log("2. Add expenses");
-console.log("3. Remove expenses");
-console.log("4. View transactions");  //income array and expenses 
-console.log("5. View summary"); //total income, total expenses, balance
-console.log("6. Exit the program");
-console.log("====================================================");
+console.log("=========================================================");
+console.log("💸 Welcome to the Personal Budget Tracking Application! 💸");
+console.log("=========================================================");
+console.log("                CHOOSE AN OPTION: ");
+console.log("---------------------------------------------------------");
+console.log("               1. Add income");
+console.log("               2. Add expenses");
+console.log("               3. Remove expenses");
+console.log("               4. View transactions");  
+console.log("               5. View summary");
+console.log("               6. Exit the program");
+console.log("=========================================================");
 console.log("\n");
 
 let dontExit = true;
@@ -63,7 +65,7 @@ const viewExpenses = () => {
     
 }
 const viewIncome = () => {
-    console.log("Income: ");
+    console.log("Income Entries: ");
     if (income.length == 0) {
         console.log("No income!");
     }
@@ -78,7 +80,7 @@ const totalIncome = () => {
         allIncome += Number(income[i]);
     }
     incomeSum = allIncome;
-    console.log(`Total Income: ${allIncome}`);
+    console.log(`Total Income: ${incomeSum}`); 
     return incomeSum;
 
 }
@@ -88,7 +90,7 @@ const totalExpenses = () => {
         allExpenses += Number(expenses[key]);
     }
     expenseSum = allExpenses;
-    console.log(`Total Expenses: ${allExpenses}`);
+    console.log(`Total Expenses: ${expenseSum}`); 
     return expenseSum;
 }
 const viewSummary = () => {
