@@ -23,6 +23,7 @@ let expenses = {
 };
 let incomeSum;
 let expenseSum;
+
 //functions
 
 const addIncome = () => {
@@ -44,7 +45,6 @@ const addExpense = () => {
 }
     
 }
-//consider adding a while loop to this function??
 const removeExpense = () => {
     let subExpenseCategory = prompt("Enter the category of the expense you would like to subtract from: ");
     let currentExpense = Number(expenses[subExpenseCategory]);
@@ -105,6 +105,9 @@ const viewSummary = () => {
         console.log(`Remaining Balance: \u001b[32m${balance}\u001b[37m`)
     }
 }
+
+//Loop that runs the program 
+
 while(dontExit) {
     let userInput = prompt("Enter Option Number: ");
      if (userInput == 1) {
@@ -137,27 +140,3 @@ while(dontExit) {
         break;
     }
 }
-//if option 1
-//add income
-//if option 2
-//remove income
-//
-//arrays for income entries
-//objects for expense entries
-
-//six functions
-
-//add income
-//add expense
-//remove expense
-//view expense statement
-//view summary
-
-//use a loop
-
-//add income
-//add expenses
-//remove expenses
-//view transactions
-//view summary
-//exit
