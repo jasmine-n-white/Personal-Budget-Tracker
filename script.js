@@ -6,8 +6,8 @@ console.log("=========================================================");
 console.log("                CHOOSE AN OPTION: ");
 console.log("---------------------------------------------------------");
 console.log("               1. Add income");
-console.log("               2. Add expenses");
-console.log("               3. Remove expenses");
+console.log("               2. Add expense");
+console.log("               3. Remove expense");
 console.log("               4. View transactions");  
 console.log("               5. View summary");
 console.log("               6. Exit the program");
@@ -26,11 +26,12 @@ let expenseSum;
 //functions
 
 const addIncome = () => {
-    let newIncome = prompt("Enter the income amount you would like to add to: ");
+    let newIncome = prompt("Enter the income amount you would like to add: ");      
     income.push(newIncome);
+    
 }
 const addExpense = () => {
-    let addExpenseCategory = prompt("Enter the category of the expense you would like to add: ");
+    let addExpenseCategory = prompt("Enter the category of the expense you would like to add to: ");
     if (expenses.hasOwnProperty(addExpenseCategory)) {
     let newExpense = Number(prompt("Enter the amount you would like to add to the selected expense category: "));
     let existingExpense = 0;
@@ -39,7 +40,7 @@ const addExpense = () => {
     } 
     expenses[addExpenseCategory] = newExpense + existingExpense;
 } else {
-    console.log("Invalid category!");
+    console.log("\u001b[31m Invalid category! \u001b[37m");
 }
     
 }
@@ -48,17 +49,18 @@ const removeExpense = () => {
     let subExpenseCategory = prompt("Enter the category of the expense you would like to subtract from: ");
     let currentExpense = Number(expenses[subExpenseCategory]);
     if (!expenses.hasOwnProperty(subExpenseCategory) || currentExpense == 0) {
-        console.log("Invalid category to subtract from!");
+        console.log("\u001b[31m Invalid category to subtract from! \u001b[37m");
     } else {
     let subExpense = Number(prompt("Enter the amount you would like to subtract from the selected expense category: "));
     if (subExpense > currentExpense) {
-        console.log("Invalid value! The amount you want to subtract must be less than or equal to the current expense value.");
+        console.log("\u001b[31m Invalid value! The amount you want to subtract must be less than or equal to the current expense value. \u001b[37m");
     } else {
         expenses[subExpenseCategory] = currentExpense - subExpense;
     }
     } 
 }
 const viewExpenses = () => {
+    console.log("Expenses: ");
     Object.keys(expenses).forEach(key => {
         console.log(`${key}: ${expenses[key]}`);
     });
@@ -96,11 +98,16 @@ const totalExpenses = () => {
 const viewSummary = () => {
     totalIncome();
     totalExpenses();
-    console.log(`Remaining Balance: ${incomeSum - expenseSum}`);
+    let balance = incomeSum - expenseSum;
+    if (balance < 0) {
+        console.log(`Remaining Balance: \u001b[31m${balance}\u001b[37m`);
+    } else if (balance > 0) {
+        console.log(`Remaining Balance: \u001b[32m${balance}\u001b[37m`)
+    }
 }
 while(dontExit) {
     let userInput = prompt("Enter Option Number: ");
-    if (userInput == 1) {
+     if (userInput == 1) {
         console.log("====================================================");
         addIncome();
         console.log("====================================================");
@@ -124,9 +131,9 @@ while(dontExit) {
         console.log("====================================================");
     } else if (userInput == 6) {
         dontExit = false;
-        console.log("=========");
-        console.log("GOODBYE!!");
-        console.log("=========");
+        console.log("============");
+        console.log("GOODBYE!!👋👋");
+        console.log("============");
         break;
     }
 }
