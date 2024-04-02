@@ -103,6 +103,8 @@ const viewSummary = () => {
         console.log(`Remaining Balance: \u001b[31m${balance}\u001b[37m`);
     } else if (balance > 0) {
         console.log(`Remaining Balance: \u001b[32m${balance}\u001b[37m`)
+    } else if (balance == 0) {
+        console.log(`Remaining Balance: ${balance}`)
     }
 }
 
@@ -130,6 +132,7 @@ while(dontExit) {
         console.log("====================================================");
     } else if (userInput == 5) {
         console.log("====================================================");
+        console.log("SUMMARY: ");
         viewSummary();
         console.log("====================================================");
     } else if (userInput == 6) {
