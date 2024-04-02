@@ -19,7 +19,8 @@ let expenses = {
     groceries: 0,
     utilities: 0,
 };
-// let balance = Number(totalIncome() - totalExpenses());
+let incomeSum;
+let expenseSum;
 //functions
 
 const addIncome = () => {
@@ -76,19 +77,24 @@ const totalIncome = () => {
     for(i=0; i<income.length; i++) {
         allIncome += Number(income[i]);
     }
+    incomeSum = allIncome;
     console.log(`Total Income: ${allIncome}`);
+    return incomeSum;
+
 }
 const totalExpenses = () => {
     let allExpenses = 0;
     for(let key in expenses) {
         allExpenses += Number(expenses[key]);
     }
+    expenseSum = allExpenses;
     console.log(`Total Expenses: ${allExpenses}`);
+    return expenseSum;
 }
 const viewSummary = () => {
     totalIncome();
     totalExpenses();
-    // console.log(`Remaining Balance: ${balance}`);
+    console.log(`Remaining Balance: ${incomeSum - expenseSum}`);
 }
 while(dontExit) {
     let userInput = prompt("Enter Option Number: ");
